@@ -70,11 +70,11 @@ export default function HeroComponent(props: HeroProps) {
               {switchBtn && 
                 <div className="flex flex-row justify-center items-center mt-6 gap-4 w-auto">
                   <LabelComponent label={switchBtn.label.left} style={cn("text-lg font-semibold", {
-                    "opacity-50": switchValue,
+                    "opacity-30": switchValue,
                   })}/>
                   <Switch onClick={() => setSwitchValue(prev => !prev)}/>
                   <LabelComponent label={switchBtn.label.right} style={cn("text-lg font-semibold", {
-                    "opacity-50": !switchValue,
+                    "opacity-30": !switchValue,
                   })}/>
                 </div>
               }

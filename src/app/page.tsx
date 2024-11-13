@@ -4,10 +4,14 @@ import { RenderBuilderContent } from "../components/builder";
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
+// interface PageProps {
+//   params: {
+//     page: string[];
+//   } | Promise<{ page: string[] }>;
+// }
+
 interface PageProps {
-  params: {
-    page: string[];
-  } | Promise<{ page: string[] }>;
+  params: Promise<{ page: string[] }>;
 }
 
 export default async function Page(props: PageProps) {

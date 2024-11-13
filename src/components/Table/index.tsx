@@ -20,6 +20,17 @@ interface TableProps {
   body: {
     cells: {
       value: string;
+      checkValues?: [
+        {
+          checked: boolean;
+        },
+        {
+          checked: boolean;
+        },
+        {
+          checked: boolean;
+        },
+      ]
     }[]
   };
   footer: {
@@ -83,7 +94,7 @@ export function TableComponent(props: TableProps = defaultTableData) {
   const { caption, header, body, footer } = props
   return (
     <Table>
-      <TableCaption>{caption}</TableCaption>
+      <TableCaption className="mt-8">{caption}</TableCaption>
       <TableHeader>
         <TableRow>
           {header.heads.length > 0 && header.heads.map((head, index) => (
@@ -95,18 +106,18 @@ export function TableComponent(props: TableProps = defaultTableData) {
         {body.cells.length > 0 && body.cells.map((cell, index) => (
           <TableRow key={index}>
             <TableCell className="font-medium">{cell.value}</TableCell>
-            <TableCell>{cell.value}</TableCell>
-            <TableCell>{cell.value}</TableCell>
-            <TableCell className="text-right">{cell.value}</TableCell>
+            {cell.checkValues && cell.checkValues.map((check, index) => (
+              <TableCell key={index}>{check.checked ? "Yes" : "No"}</TableCell>
+            ))}
           </TableRow>
         ))}
       </TableBody>
-      <TableFooter>
+      {footer.total && <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
           <TableCell className="text-right">$2,500.00</TableCell>
         </TableRow>
-      </TableFooter>
+      </TableFooter>}
     </Table>
   )
 }

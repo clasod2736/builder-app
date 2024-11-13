@@ -88,7 +88,7 @@ export default function NavigationBar(props: NavigationBarProps = defaultNavigat
             <NavigationMenuItem key={index}>
               <NavigationMenuTrigger>{menu.trigger}</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]" key={index}>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]" key={menu.trigger}>
                   {menu.list && menu.list.map((item) => (
                     <ListItem
                       key={item.title}

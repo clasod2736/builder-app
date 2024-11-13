@@ -229,6 +229,16 @@ Builder.registerComponent(TableComponent, {
             {
               name: "value",
               type: "string",
+            },
+            {
+              name: "checkValues",
+              type: "list",
+              subFields: [
+                {
+                  name: "checked",
+                  type: "boolean",
+                }
+              ]
             }
           ]
         }

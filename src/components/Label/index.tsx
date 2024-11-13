@@ -8,7 +8,7 @@ interface LabelProps {
 }
  
 export function LabelComponent(props: LabelProps) {
-  const { label = 'default', style, align = "left" } = props;
+  const { label = 'default', style } = props;
   return (
     <div>
       <div className={cn("flex items-center space-x-2", {
