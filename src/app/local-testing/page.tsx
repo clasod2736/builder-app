@@ -1,6 +1,7 @@
 import HeroComponent from "@/components/Hero";
 import Card from "@/components/PriceCard";
 import TopNavigation from "@/components/NavMenu";
+import { LabelComponent } from "@/components/Label";
 
 const mockedPriceCardData = {
   title: 'Early Plan',
@@ -40,11 +41,16 @@ const defaultHeroText = {
     {
       value: "Cancel Anytime",
     }
-  ]
+  ],
+  switchBtn: {
+    label: {
+      left: "Monthly",
+      right: "Yearly",
+    },
+  }
 }
 
 const defualtNavigationData = {
-  logo: "/favicon.ico",
   items: [
     {
       trigger: "Primitives",
@@ -100,12 +106,18 @@ const defualtNavigationData = {
   ]
 }
 
+const label = {
+  label: "Compare Plans",
+  style: "text-xl font-bold text-gray-800"
+}
+
 export default function Home() {
   return (
   <div className="w-full min-h-screen flex flex-col justify-center items-center">
     <TopNavigation {...defualtNavigationData}/>
     <HeroComponent {...defaultHeroText}/>
     <Card {...mockedPriceCardData}/>
+    <LabelComponent {...label}/>
   </div>
   )
 }

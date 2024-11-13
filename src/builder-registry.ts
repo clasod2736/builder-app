@@ -6,6 +6,8 @@ import NavigationBar from "./components/NavMenu";
 import { AvatarComponent } from "./components/Avatar";
 import PriceCardComponent from "./components/PriceCard";
 import HeroComponent from "./components/Hero";
+import { TableComponent } from "./components/Table";
+import { LabelComponent } from "./components/Label";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -165,7 +167,101 @@ Builder.registerComponent(HeroComponent, {
           type: "string",
         }
       ]
+    },
+    {
+      name: "switchBtn",
+      type: "object",
+      subFields: [
+        {
+          name: "label",
+          type: "object",
+          subFields: [
+            {
+              name: "left",
+              type: "string",
+            },
+            {
+              name: "right",
+              type: "string",
+            }
+          ]
+        }
+      ]
     }
   ]
 })
 
+Builder.registerComponent(TableComponent, {
+  name: "Table",
+  inputs: [
+    {
+      name: "caption",
+      type: "string",
+    },
+    {
+      name: "header",
+      type: "object",
+      subFields: [
+        {
+          name: "heads",
+          type: "list",
+          subFields: [
+            {
+              name: "label",
+              type: "string",
+            },
+            {
+              name: "width",
+              type: "string",
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "body",
+      type: "object",
+      subFields: [
+        {
+          name: "cells",
+          type: "list",
+          subFields: [
+            {
+              name: "value",
+              type: "string",
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "footer",
+      type: "object",
+      subFields: [
+        {
+          name: "total",
+          type: "string",
+        }
+      ]
+    }
+  ]
+})
+
+Builder.registerComponent(LabelComponent, {
+  name: "Label",
+  inputs: [
+    {
+      name: "label",
+      type: "string",
+    },
+    {
+      name: "style",
+      type: "string",
+    },
+    {
+      name: "align",
+      type: "string",
+      enum: ["left", "center", "right"],
+    }
+  ]
+})

@@ -1,5 +1,11 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "../ui/badge";
+import { Switch } from "../ui/switch";
+import { LabelComponent } from "../Label";
+import React from "react";
+import { cn } from "@/lib/utils";
 
 interface HeroProps {
   title: string;
@@ -12,10 +18,18 @@ interface HeroProps {
     label: string;
     href: string;
   }[];
+  switchBtn?: {
+    label: {
+      left: string;
+      right: string;
+    }
+  }
 }
 
 export default function HeroComponent(props: HeroProps) {
-  const { title, description, actions, badges } = props;
+  const { title, description, actions, badges, switchBtn } = props;
+
+  const [switchValue, setSwitchValue] = React.useState(false);
 
   return (
     <>
@@ -52,6 +66,18 @@ export default function HeroComponent(props: HeroProps) {
                 );
               })}
               </div>
+              {/** Switch */}
+              {switchBtn && 
+                <div className="flex flex-row justify-center items-center mt-6 gap-4 w-auto">
+                  <LabelComponent label={switchBtn.label.left} style={cn("text-lg font-semibold", {
+                    "opacity-50": switchValue,
+                  })}/>
+                  <Switch onClick={() => setSwitchValue(prev => !prev)}/>
+                  <LabelComponent label={switchBtn.label.right} style={cn("text-lg font-semibold", {
+                    "opacity-50": !switchValue,
+                  })}/>
+                </div>
+              }
             </div>
           </div>
         </div>
