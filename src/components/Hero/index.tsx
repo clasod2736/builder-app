@@ -36,7 +36,7 @@ export default function HeroComponent(props: HeroProps) {
       {/* Hero */}
       <div className="overflow-hidden py-14">
         <div className="z-10">
-          <div className="container px-6 py-10">
+          <div className="container px-6 py-10 mx-auto">
             <div className="max-w-2xl text-center mx-auto">
               {/* Title */}
               <div className="mt-5 max-w-2xl">
@@ -50,12 +50,17 @@ export default function HeroComponent(props: HeroProps) {
                 </p>
               </div>
               {/* Buttons */}
-              {actions && actions.length > 0 && <div className="mt-8 gap-3 flex justify-center">
-                <Button size={"lg"}>Get started</Button>
-                <Button size={"lg"} variant={"outline"}>
-                  Learn more
-                </Button>
-              </div>}
+              {actions && actions.length > 0 && 
+              <div className="mt-8 gap-3 flex justify-center">
+              {actions.map((action) => {
+                return (
+                  <Button key={action.label} size={"lg"} href={action.href}>
+                    {action.label}
+                  </Button>      
+                )
+              })}
+              </div>
+                }
               {/* Badges */}
               <div className="flex flex-row gap-2 justify-center">
               {badges && badges.map((badge) => {

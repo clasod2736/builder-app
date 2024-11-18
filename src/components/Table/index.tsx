@@ -93,7 +93,7 @@ const defaultTableData = {
 export function TableComponent(props: TableProps = defaultTableData) {
   const { caption, header, body, footer } = props
   return (
-    <Table>
+    <Table className="md:p-32 p-16">
       <TableCaption className="mt-8">{caption}</TableCaption>
       <TableHeader>
         <TableRow>
